@@ -17,9 +17,9 @@ RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
 
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
 
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'discomsarl.pythonanywhere.com']
 
 SITE_ID = 1
 
