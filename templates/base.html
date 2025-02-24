@@ -1,13 +1,13 @@
 {% load static i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-FR">
 
 <head>
     <meta charset="utf-8">
-    <title>DISCOM - {% block title %}  {% endblock title %}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+  
+
+    <title>DISCOM - {% block title %}  {% endblock title %}</title>
 
     <!-- Favicon -->
     <link href="/static/img/favicon.ico" rel="icon">
@@ -34,6 +34,17 @@
         html{
             scroll-behavior: smooth;
         }
+        @media (max-width: 576px) {
+            #header-carousel .carousel-item{
+                height: 300px !important;
+            }
+            #header-carousel img{
+                height: 100% !important;
+            }
+            #header-carousel .carousel-caption>div{
+                padding: 1rem 0.2rem !important;
+            }
+        }
     </style>
     {% block css %}  {% endblock css %}
 </head>
@@ -53,7 +64,7 @@
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Akwa, Douala, {% trans 'Cameroun' %}</small>
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+237 694 223 136</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@discom.com</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>contact@discom.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -84,7 +95,7 @@
                     <a href="#home" class="nav-item nav-link">{% trans 'Accueil' %}</a>
                     <a href="#about-us" class="nav-item nav-link">{% trans 'A propos' %}</a>
                     <a href="#our-services" class="nav-item nav-link">{% trans 'Services' %}</a>
-                    <a href="#features" class="nav-item nav-link">{% trans 'Nous choisir' %}</a>
+                    <a href="#choose-us" class="nav-item nav-link">{% trans 'Nous choisir' %}</a>
                     <a href="#contact-us" class="nav-item nav-link">{% trans 'Contactez-nous' %}</a>
                 </div>
             </div>
@@ -99,7 +110,7 @@
                             <h5 class="text-white text-uppercase text-secondary mb-3 animated slideInDown">{% trans 'Votre partenaire de transformation digitale' %}</h5>
                             <h1 class="display-3 text-white text-uppercase mb-md-4 animated zoomIn">{% trans 'Digital Solutions & Services Company SARL' %}</h1>
                             <a href="tel:+237694223136" class="btn btn-secondary py-md-3 px-md-5 me-3 animated slideInLeft">{% trans 'Devis gratuit' %}</a>
-                            <a href="#" class="btn btn-primary py-md-3 px-md-5 animated slideInRight">{% trans 'Contactez-nous' %}</a>
+                            <a href="#contact-us" class="btn btn-primary py-md-3 px-md-5 animated slideInRight">{% trans 'Contactez-nous' %}</a>
                         </div>
                     </div>
                 </div>
@@ -145,7 +156,7 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">info@discom.com</p>
+                                <p class="mb-0">contact@discom.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
@@ -163,11 +174,11 @@
                                 <h3 class="text-light mb-0">{% trans 'Liens rapides' %}</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="{% url 'site:home' %}"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Accueil' %}</a>
-                                <a class="text-light mb-2" href="#about"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'A propos' %}</a>
-                                <a class="text-light mb-2" href="#services"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Services' %}</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Dernier article' %}</a>
-                                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Contactez-nous' %}</a>
+                                <a class="text-light mb-2" href="#home"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Accueil' %}</a>
+                                <a class="text-light mb-2" href="#about-us"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'A propos' %}</a>
+                                <a class="text-light mb-2" href="#our-services"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Services' %}</a>
+                                <a class="text-light mb-2" href="#choose-us"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Nous choisir' %}</a>
+                                <a class="text-light" href="#contact-us"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Contactez-nous' %}</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -175,9 +186,11 @@
                                 <h3 class="text-light mb-0">{% trans 'Nos services' %}</h3>
                             </div>
                             <div class="link-animated d-flex flex-column justify-content-start">
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Réservations en ligne' %}</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Création de sites web' %}</a>
-                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Installation de portails électriques' %}</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Création de sites web'  %}</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Services digitaux' %}</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Sécurité électronique' %}</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Électricité bâtiment' %}</a>
+                                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Énergie solaire photovoltaïque' %}</a>
                             </div>
                         </div>
                     </div>
@@ -190,7 +203,6 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-between" style="height: 75px; font-size: 14px">
-                        <p class="mb-0" >&copy; {% now "Y" %}<span class="text-white"> DISCOM </span>. {% trans 'Tous droits réservés' %}. </p>
                         <p class="mb-0" >&copy; {% now "Y" %}<span class="text-white"> DISCOM </span>. {% trans 'Tous droits réservés' %}. </p>
                     </div>
                 </div>
