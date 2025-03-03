@@ -14,6 +14,11 @@
     form label{
         display: none;
     }
+    #our-services .service-image img{
+        width: 300px;
+        height: 150px;
+        margin-bottom: 15px;
+    }
 </style>
 
 {% endblock css %}
@@ -89,8 +94,8 @@
         <div class="row g-5">
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                    <div class="service-icon">
-                        <i class="fa fa-code text-white"></i>
+                    <div class="service-image">
+                        <img src="/static/img/service-1.png" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Création de sites web sur mesure' %}</h4>
                     <p class="m-0">{% trans "Des sites modernes, performants et adaptés à votre activité." %}</p>
@@ -98,8 +103,8 @@
             </div>
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                    <div class="service-icon">
-                        <i class="fa fa-chart-pie text-white"></i>
+                    <div class="service-image">
+                        <img src="/static/img/service-2.png" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Services digitaux' %}</h4>
                     <p class="m-0">{% trans "Accompagnement en transformation numérique, marketing digital et solutions web." %}</p>
@@ -107,17 +112,17 @@
             </div>
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                    <div class="service-icon">
-                        <i class="fa fa-shield-alt text-white"></i>
+                    <div class="service-image">
+                        <img src="/static/img/service-3.png" alt="Création de site web">
                     </div>
-                    <h4 class="mb-3">{% trans 'Sécurité électronique' %}</h4>
-                    <p class="m-0">{% trans "Installation de système de vidéosurveillance, contrôle d'accès et portails à ouverture automatique pour une protection optimale." %}</p>
+                    <h4 class="mb-3 text-nowrap">{% trans 'Sécurité électronique' %}</h4>
+                    <p class="m-0">{% trans "Installation de système de vidéosurveillance, portails électriques." %}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                    <div class="service-icon">
-                        <i class="fab fa-android text-white"></i>
+                    <div class="service-image">
+                        <img src="/static/img/service-4.png" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Électricité bâtiment' %}</h4>
                     <p class="m-0">{% trans "Des installations électriques sécurisées et conformes aux normes en vigueur." %}</p>
@@ -125,11 +130,11 @@
             </div>
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                    <div class="service-icon">
-                        <i class="fa fa-search text-white"></i>
+                    <div class="service-image">
+                        <img src="/static/img/service-5.png" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Énergie solaire photovoltaïque' %}</h4>
-                    <p class="m-0">{% trans "Mise en place de solutions écologiques et économiques pour une autonomies énergétique." %}</p>
+                    <p class="m-0">{% trans "Mise en place de solutions écologiques et économiques." %}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
@@ -259,7 +264,7 @@
                               {{ form.as_div }}
                               <p class="text-danger" id="recaptext"></p>
                               <div class="col-12">
-                                  <button class="btn btn-dark w-100 py-3" type="submit" onclick="return validateForm()">{% trans 'Demander un devis' %}</button>
+                                  <button class="btn btn-secondary w-100 py-3" type="submit" onclick="return validateForm()">{% trans 'Demander un devis' %}</button>
                               </div>
                           </div>
                       </form>
