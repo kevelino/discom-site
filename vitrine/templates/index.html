@@ -95,7 +95,7 @@
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-image">
-                        <img src="/static/img/service-1.png" alt="Création de site web">
+                        <img src="{% static 'img/service-1.png' %}" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Création de sites web sur mesure' %}</h4>
                     <p class="m-0">{% trans "Des sites modernes, performants et adaptés à votre activité." %}</p>
@@ -104,7 +104,7 @@
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-image">
-                        <img src="/static/img/service-2.png" alt="Création de site web">
+                        <img src="{% static 'img/service-2.png' %}" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Services digitaux' %}</h4>
                     <p class="m-0">{% trans "Accompagnement en transformation numérique, marketing digital et solutions web." %}</p>
@@ -113,7 +113,7 @@
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-image">
-                        <img src="/static/img/service-3.png" alt="Création de site web">
+                        <img src="{% static 'img/service-3.png' %}" alt="Création de site web">
                     </div>
                     <h4 class="mb-3 text-nowrap">{% trans 'Sécurité électronique' %}</h4>
                     <p class="m-0">{% trans "Installation de système de vidéosurveillance, portails électriques." %}</p>
@@ -122,7 +122,7 @@
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-image">
-                        <img src="/static/img/service-4.png" alt="Création de site web">
+                        <img src="{% static 'img/service-4.png' %}" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Électricité bâtiment' %}</h4>
                     <p class="m-0">{% trans "Des installations électriques sécurisées et conformes aux normes en vigueur." %}</p>
@@ -131,7 +131,7 @@
             <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-image">
-                        <img src="/static/img/service-5.png" alt="Création de site web">
+                        <img src="{% static 'img/service-5.png' %}" alt="Création de site web">
                     </div>
                     <h4 class="mb-3">{% trans 'Énergie solaire photovoltaïque' %}</h4>
                     <p class="m-0">{% trans "Mise en place de solutions écologiques et économiques." %}</p>
@@ -257,8 +257,8 @@
                   </div>
               </div>
               <div class="col-lg-5">
-                  <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
-                      <form method="post">
+                  <div class="bg-primary rounded h-100 d-flex align-items-center p-1 p-lg-5 wow zoomIn" data-wow-delay="0.9s">
+                      <form method="post" class="px-lg-0 p-2">
                         {% csrf_token %}
                           <div class="row g-3">
                               {{ form.as_div }}

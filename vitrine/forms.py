@@ -15,6 +15,9 @@ class ContactForm(forms.ModelForm):
   class Meta:
     model = Contact
     fields = ('full_name', 'email', 'subject', 'message')
+    label = {
+        'subject': _('objet')
+    }
 
     widgets = {
         'full_name':forms.TextInput(attrs={
@@ -27,12 +30,15 @@ class ContactForm(forms.ModelForm):
         }),
         'subject':forms.TextInput(attrs={
             'class':'form-control bg-light border-0',
-            'placeholder':_('Le sujet de votre message')
+            'placeholder':_("L'objet de votre message")
         }),
         'message':forms.Textarea(attrs={
             'class':'form-control bg-light border-0',
             'rows':3,
             'placeholder':_('Message')
+        }),
+        'captcha': forms.CheckboxInput(attrs={
+            'class':'form-control bg-light border-0',
         }),
     }
 
