@@ -19,6 +19,16 @@
         height: 150px;
         margin-bottom: 15px;
     }
+    @media (max-width: 576px) {
+        .container-lg{
+            width: 100%;
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+            margin-right: auto;
+            margin-left: auto;
+          }
+    }
+    
 </style>
 
 {% endblock css %}
@@ -223,7 +233,7 @@
 
   <!-- Quote Start -->
   <section class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact-us">
-      <div class="container py-5">
+      <div class="container-lg py-5">
           <div class="row g-5">
               <div class="col-lg-7">
                   <div class="section-title position-relative pb-3 mb-5">
@@ -257,14 +267,14 @@
                   </div>
               </div>
               <div class="col-lg-5">
-                  <div class="bg-primary rounded h-100 d-flex align-items-center p-1 p-lg-5 wow zoomIn" data-wow-delay="0.9s">
-                      <form method="post" class="px-lg-0 p-2">
+                  <div class="bg-primary rounded h-100 d-flex align-items-center p-md-5 wow zoomIn" data-wow-delay="0.9s">
+                      <form action="{% url 'site:home' %}" method="post" class="px-lg-0 py-3 px-1">
                         {% csrf_token %}
-                          <div class="row g-3">
+                          <div class="row g-md-3 g-3">
                               {{ form.as_div }}
-                              <p class="text-danger" id="recaptext"></p>
+                              <p id="recaptcha-text" class="text-danger"></p>
                               <div class="col-12">
-                                  <button class="btn btn-secondary w-100 py-3" type="submit" onclick="return validateForm()">{% trans 'Demander un devis' %}</button>
+                                  <button class="btn btn-secondary w-100 py-3" type="submit" onclick="validateForm()">{% trans 'Demander un devis' %}</button>
                               </div>
                           </div>
                       </form>
@@ -283,16 +293,7 @@
 
 {% block js %}
 
-<script>
-    function validateForm() {
-        var captchaResponse = grecaptcha.getResponse();
-        if (captchaResponse.length === 0) {
-            document.getElementById('recaptext').innerText = '{% trans "Vérifier que vous n\'êtes pas un robot" %}'
-            return false;
-        }
-        return true;
-    }
-</script>
+
 
 {% endblock js %}
   
