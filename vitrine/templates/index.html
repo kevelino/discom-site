@@ -19,6 +19,9 @@
         height: 150px;
         margin-bottom: 15px;
     }
+    form button{
+        width: 100%;
+    }
     @media (max-width: 576px) {
         .container-lg{
             width: 100%;
@@ -26,7 +29,13 @@
             padding-left: 0 !important;
             margin-right: auto;
             margin-left: auto;
-          }
+        }
+        form input{
+            height: 50px;
+        }
+        form>div{
+            padding: 15px;
+        }
     }
     
 </style>
@@ -268,13 +277,13 @@
               </div>
               <div class="col-lg-5">
                   <div class="bg-primary rounded h-100 d-flex align-items-center p-md-5 wow zoomIn" data-wow-delay="0.9s">
-                      <form action="{% url 'site:home' %}" method="post" class="px-lg-0 py-3 px-1">
+                      <form action="{% url 'site:home' %}" method="post" class="px-lg-0 py-3">
                         {% csrf_token %}
                           <div class="row g-md-3 g-3">
                               {{ form.as_div }}
                               <p id="recaptcha-text" class="text-danger"></p>
                               <div class="col-12">
-                                  <button class="btn btn-secondary w-100 py-3" type="submit" onclick="validateForm()">{% trans 'Demander un devis' %}</button>
+                                  <button class="btn btn-secondary w-100 py-2 py-lg-3" type="submit" onclick="validateForm()">{% trans 'Demander un devis' %}</button>
                               </div>
                           </div>
                       </form>
