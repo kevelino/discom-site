@@ -1,6 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Contact
-from .forms import ContactForm
+from .forms import ContactForm, RequestQuoteForm
 from django.views.generic import TemplateView
 
 class RobotsTxtView(TemplateView):
@@ -9,16 +8,20 @@ class RobotsTxtView(TemplateView):
 
 def index(request):
   if request.method == "POST":
-    form = ContactForm(request.POST)
-    if form.is_valid:
-      form.save()
+    form1 = ContactForm(request.POST)
+    form2 = RequestQuoteForm(request.POST)
+    if form1.is_valid or form2.is_valid:
+      form1.save()
+      form2.save()
       return redirect('site:home')
   
   else:
-    form = ContactForm()
+    form1 = ContactForm()
+    form2 = RequestQuoteForm()
     
     context = {
-      'form': form
+      'form1': form1,
+      'form2': form2
     }
   return render(request, "index.html", context)
 

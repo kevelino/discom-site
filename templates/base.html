@@ -61,6 +61,10 @@
             z-index: 99;
             position: fixed;
         }
+        #dismiss-modal{
+            position: absolute;
+            right: 0 !important;
+        }
         @media (max-width: 576px) {
             .whatsapp{
                 left: 15px;
@@ -81,9 +85,9 @@
 
 <body>
     <!-- Spinner Start -->
-    <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner"></div>
-    </div>  -->
+    </div> 
     <!-- Spinner End -->
 
 
@@ -94,7 +98,7 @@
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Akwa, Douala, {% trans 'Cameroun' %}</small>
                     <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+237 694 223 136</small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>contact@discom.com</small>
+                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>contact@discom-group.com</small>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -139,10 +143,30 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase text-secondary mb-3 animated slideInDown">{% trans 'Votre partenaire de transformation digitale' %}</h5>
                             <h1 class="display-3 text-white text-uppercase mb-md-4 animated zoomIn">{% trans 'Digital Solutions & Services Company SARL' %}</h1>
-                            <a href="tel:+237694223136" class="btn btn-secondary py-md-3 px-md-5 me-3 animated slideInLeft">{% trans 'Devis gratuit' %}</a>
-                            <a href="#contact-us" class="btn btn-primary py-md-3 px-md-5 animated slideInRight">{% trans 'Contactez-nous' %}</a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-secondary py-md-3 px-md-5 me-3 animated slideInLeft">{% trans 'Devis gratuit' %}</button>
+                            <a href="tel:+237694223136" class="btn btn-primary py-md-3 px-md-5 animated slideInRight">{% trans 'Contactez-nous' %}</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-primary rounded d-flex align-items-center p-md-2 wow zoomIn" data-wow-delay="0.2s">
+                    <button type="button" id="dismiss-modal" class="btn bg-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-square" style="color: #000; font-size:20px"></i></button>
+                    <form action="{% url 'site:home' %}" method="post" class="px-lg-0">
+                      {% csrf_token %}
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Demander un devis' %}</h1>
+                      </div>
+                        <div class="modal-body row g-md-3 g-3">
+                            {{ form2.as_div }}
+                            <p id="recaptcha-text" class="text-danger"></p>
+                            <div class="col-12">
+                                <button class="btn btn-secondary w-100 py-2 py-lg-3" type="submit" onclick="validateForm()">{% trans 'Demander un devis' %}</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -192,7 +216,7 @@
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-envelope-open text-primary me-2"></i>
-                                <p class="mb-0">contact@discom.com</p>
+                                <p class="mb-0">contact@discom-group.com</p>
                             </div>
                             <div class="d-flex mb-2">
                                 <i class="bi bi-telephone text-primary me-2"></i>
