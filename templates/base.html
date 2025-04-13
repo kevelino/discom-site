@@ -154,14 +154,14 @@
             <div class="modal-dialog">
                 <div class="modal-content bg-primary rounded d-flex align-items-center p-md-2 wow zoomIn" data-wow-delay="0.2s">
                     <button type="button" id="dismiss-modal" class="btn bg-primary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-square" style="color: #000; font-size:20px"></i></button>
-                    <form action="{% url 'site:home' %}" method="post" class="px-lg-0">
-                      {% csrf_token %}
-                      <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Demander un devis' %}</h1>
-                      </div>
+                    <form id="request-quote-form" method="post" class="px-lg-0">
+                        {% csrf_token %}
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Demander un devis' %}</h1>
+                        </div>
+                        <div id="resultat" class="m-2 text-danger"></div>
                         <div class="modal-body row g-md-3 g-3">
-                            {{ form2.as_div }}
-                            <p id="recaptcha-text" class="text-danger"></p>
+                            {{ request_quote_form.as_div }}
                             <div class="col-12">
                                 <button class="btn btn-secondary w-100 py-2 py-lg-3" type="submit" onclick="validateForm()">{% trans 'Demander un devis' %}</button>
                             </div>
@@ -291,18 +291,35 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
-    
+
     <script>
-        function validateForm() {
-            console.log("ICI ----")
-            var captchaResponse = grecaptcha.getResponse();
-            if (captchaResponse.length === 0) {
-                text = "{%  trans 'Veillez compléter le Recaptcha' %}"
-                document.querySelector('#recaptcha-text').innerText = text
-                return false;
-            }
-            return true;
-        }
+        document.getElementById('request-quote-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let form = e.target;
+            let formData = new FormData(form);
+
+            fetch("{% url 'site:request_quote' %}", {
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value,
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const res = document.getElementById('resultat');
+                if (data.success) {
+                    res.innerHTML = "<p class='text-success'>Demande de devis envoyée avec succès</p>"
+                    form.reset();
+                }else {
+                    res.innerHTML = data.errors
+                }
+            })
+            .catch(error => {
+                console.log("Erreur AJAX :", error);
+            });
+        });
     </script>
 
     <script>

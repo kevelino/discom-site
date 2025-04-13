@@ -1,30 +1,78 @@
 from django.shortcuts import redirect, render
+from django.http import JsonResponse
 from .forms import ContactForm, RequestQuoteForm
 from django.views.generic import TemplateView
+from django.core.mail import send_mail
+from django.conf import settings
 
 class RobotsTxtView(TemplateView):
   template_name = "robots.txt"
 
 
 def index(request):
-  if request.method == "POST":
-    form1 = ContactForm(request.POST)
-    form2 = RequestQuoteForm(request.POST)
-    if form1.is_valid or form2.is_valid:
-      form1.save()
-      form2.save()
-      return redirect('site:home')
+  contact_form = ContactForm()
+  request_quote_form = RequestQuoteForm()
   
-  else:
-    form1 = ContactForm()
-    form2 = RequestQuoteForm()
-    
-    context = {
-      'form1': form1,
-      'form2': form2
-    }
+  context = {
+    'contact_form': contact_form,
+    'request_quote_form': request_quote_form
+  }
   return render(request, "index.html", context)
 
+
+def requestQuote(request):
+  request_quote_form = RequestQuoteForm()
+  if request.method == "POST":
+    request_quote_form = RequestQuoteForm(request.POST)
+    if request_quote_form.is_valid():
+      nom = request_quote_form.cleaned_data.get('nom')
+      email = request_quote_form.cleaned_data.get('email')
+      entreprise = request_quote_form.cleaned_data.get('entreprise')
+      service = request_quote_form.cleaned_data.get('service')
+      message = request_quote_form.cleaned_data.get('message')
+        
+      # Send an email
+      send_mail(
+        f' Infos pour {service}', #Sujet du message
+        f'Message de {nom} <{email}> - {entreprise if entreprise else ""} \n\n',
+        message, # Message
+        None,  # From email
+        [settings.ADMIN_EMAIL],  # To email
+        # fail_silently=False,
+      )
+      return JsonResponse({'success': True})
+    else:
+      print(request_quote_form.errors)
+      return JsonResponse({'success': False, 'errors': request_quote_form.errors.as_ul()})
+  return JsonResponse({'success': False, 'errors': 'Requête invalide.'}) 
+
+
+def contactUs(request):
+  contact_form = ContactForm()
+  if request.method == "POST":
+    contact_form = ContactForm(request.POST)
+    if contact_form.is_valid():
+      full_name = contact_form.cleaned_data.get('full_name')
+      email = contact_form.cleaned_data.get('email')
+      subject = contact_form.cleaned_data.get('subject')
+      message = contact_form.cleaned_data.get('message')
+      
+      # Send an email
+      send_mail(
+        subject, #Sujet du message
+        f'Message de {full_name} <{email}> \n\n',
+        message, # Message
+        None,  # From email
+        [settings.ADMIN_EMAIL],  # To email
+        # fail_silently=False,
+      )
+      
+      return JsonResponse({'success': True})
+    else:
+      print(contact_form.errors)
+      return JsonResponse({'success': False, 'errors': contact_form.errors.as_ul()})
+  return JsonResponse({'success': False, 'errors': 'Requête invalide.'}) 
+    
 
 
 def page404(request, exception):

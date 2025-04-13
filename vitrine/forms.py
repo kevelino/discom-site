@@ -10,7 +10,7 @@ class ContactForm(forms.Form):
         max_length=100, 
         label=_("Nom complet"),
         required=True,
-        widget=forms.EmailInput(attrs={'class': 'form-control bg-light border-0', 'placeholder': _('Votre nom')})
+        widget=forms.TextInput(attrs={'class': 'form-control bg-light border-0', 'placeholder': _('Votre nom')})
     )
     
     subject = forms.CharField(
@@ -36,7 +36,7 @@ class ContactForm(forms.Form):
         label='',
         required=True,
         error_messages={
-            'required': 'Veuillez compléter le reCAPTCHA pour soumettre le formulaire.'},
+            'required': _('Veuillez compléter le reCAPTCHA pour soumettre le formulaire.')},
         )
 
 
@@ -87,6 +87,6 @@ class RequestQuoteForm(forms.Form):
         label='',
         required=True,
         error_messages={
-            'required': 'Veuillez compléter le reCAPTCHA pour soumettre le formulaire.'
+            'required': _('Veuillez compléter le reCAPTCHA pour soumettre le formulaire.')
         })
     
