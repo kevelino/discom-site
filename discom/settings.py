@@ -19,7 +19,8 @@ RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'discomsarl.pythonanywhere.com', 'discom-site.onrender.com', 'discom-group.com']
+ALLOWED_HOSTS = ['discom-site.onrender.com', 'www.discom-site.onrender.com', 'discom-group.com', 'www.discom-group.com']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 SITE_ID = 1
 
