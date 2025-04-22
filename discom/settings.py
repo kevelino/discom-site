@@ -17,7 +17,7 @@ RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
 
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['discom-site.onrender.com', 'www.discom-site.onrender.com', 'discom-group.com', 'www.discom-group.com']
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
