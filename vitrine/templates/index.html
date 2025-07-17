@@ -22,6 +22,24 @@
     form button{
         width: 100%;
     }
+    .services .partner-item{
+      border: 1px solid color-mix(in srgb, #666666, transparent 85%);
+    }
+    .services .partner-item:hover{
+      border: 1px solid #D81816;
+      transition: 0.3s;
+    }
+    .services .partner-item img{
+      width: auto;
+      height: 180px;
+    }
+    .services .partner-item div{
+      margin: 12px 0;
+    }
+    .services .partner-item h4.title{
+      text-align: center;
+      font-weight: 600;
+    }
     @media (max-width: 576px) {
         .container-lg{
             width: 100%;
@@ -35,6 +53,9 @@
         }
         form>div{
             padding: 15px;
+        }
+        .services .partner-item img{
+        height: 140px;
         }
     }
     
@@ -322,6 +343,36 @@
   <!-- Quote End -->
 
 
+    <!-- Partners Section -->
+    <section  class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s" id="partners">
+
+        <!-- Section Title -->
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+            <h2>{% trans 'Nos Partenaires' %}</h2>
+        </div>
+
+      <div class="container">
+
+        <div class="row justify-content-center gy-4">
+
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <a href="https://www.phoenixgroup.cm" target="_blank">
+                    <div class="partner-item">
+                        <div class="w-100 d-flex justify-content-center">
+                            <img class="img-fluid" src="{% static 'img/phoenix_group_partenaire.jpg' %}" alt="Phoenix Group Partenaire">
+                        </div>
+                        <div>
+                            <h4 class="text-center">Phoenix Group</h4>
+                        </div>
+                    </div>
+                </a>
+            </div><!-- End Partners Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Partners Section -->
 
 
 {% endblock content %}

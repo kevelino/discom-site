@@ -38,7 +38,7 @@ class ContactForm(forms.Form):
         error_messages={
             'required': _('Veuillez compléter le reCAPTCHA pour soumettre le formulaire.')},
         )
-
+            
 
 class RequestQuoteForm(forms.Form):
     """Formulaire de demande de devis personnalisé."""
@@ -82,7 +82,7 @@ class RequestQuoteForm(forms.Form):
         widget=forms.Textarea(attrs={'class': 'form-control bg-light border-0', 'rows': 3, 'placeholder': _('Expliquez votre besoin...')})
     )
 
-
+    
     captcha = ReCaptchaField(
         label='',
         required=True,

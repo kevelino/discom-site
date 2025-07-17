@@ -164,6 +164,7 @@
                     <a href="#our-services" class="nav-item nav-link">{% trans 'Services' %}</a>
                     <a href="#choose-us" class="nav-item nav-link">{% trans 'Nous choisir' %}</a>
                     <a href="#contact-us" class="nav-item nav-link">{% trans 'Contactez-nous' %}</a>
+                    <a href="#contact-us" class="nav-item nav-link">{% trans 'Partenaires' %}</a>
                 </div>
             </div>
         </nav>
@@ -190,7 +191,7 @@
                     <form id="request-quote-form" method="post" class="px-lg-0">
                         {% csrf_token %}
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Demander un devis' %}</h1>
+                            <h1 class="modal-title fs-5 text-white" id="staticBackdropLabel">{% trans 'Demander un devis' %}</h1>
                         </div>
                         <div id="resultat" class="m-2 text-danger"></div>
                         <div class="modal-body row g-md-3 g-3">
@@ -272,6 +273,7 @@
                                 <a class="text-light mb-2" href="#our-services"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Services' %}</a>
                                 <a class="text-light mb-2" href="#choose-us"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Nous choisir' %}</a>
                                 <a class="text-light" href="#contact-us"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Contactez-nous' %}</a>
+                                <a class="text-light" href="#partners"><i class="bi bi-arrow-right text-primary me-2"></i>{% trans 'Partenaires' %}</a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">

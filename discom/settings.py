@@ -120,17 +120,39 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL INFORMATION
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST')
+
+EMAIL_HOST = 'smtp.gmail.com'
+
 EMAIL_USE_TLS = True
-EMAIL_PORT = env('EMAIL_PORT')
+
+EMAIL_PORT = 587
+
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 ADMIN_EMAIL = env('ADMIN_EMAIL')
 
+ADMIN_EMAIL = env('ADMIN_EMAIL')
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ADMIN_USER_NAME = env("ADMIN_USER_NAME")
+
+ADMIN_USER_EMAIL = env("ADMIN_USER_EMAIL")
+
+MANAGERS=[]
+
+ADMINS=[]
+
+if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
+    ADMINS +=[
+        (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
+    ]
+    MANAGERS=ADMINS
+

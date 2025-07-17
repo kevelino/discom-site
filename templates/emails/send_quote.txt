@@ -1,0 +1,16 @@
+Bonjour DISCOM SARL,
+
+{{ message }}
+
+Mes coordonnées:
+
+Nom : {{ full_name }}
+Email : {{ emaill }}
+Entreprise : {{ company }}
+Service : {{ service }}
+
+Données provenant de : {{ current_site }}
+
+{{ full_name }}, 
+
+Merci !
